@@ -1,9 +1,10 @@
-import { Catalog } from "pages/Catalog";
-import { Favourites } from "pages/Favourites";
-import { Home } from "pages/Home";
-import { Suspense } from "react";
-import { Link, Route, Routes } from "react-router-dom";
-import Loader from "./Loader/Loader";
+import { Catalog } from 'pages/Catalog';
+import { Favorites } from 'pages/Favorites';
+import { Home } from 'pages/Home';
+import { Suspense } from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
+import Loader from './Loader/Loader';
+import { Navigate } from 'react-router-dom/dist';
 
 export const App = () => {
   return (
@@ -20,8 +21,8 @@ export const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/catalog" element={<Catalog />} />
-            <Route path="/favorites" element={<Favourites />}/>
-            <Route path="*" element={<h1>Error 404</h1>} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>
       </main>
