@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCars } from 'redux/operations';
 
-function CarList({ onOpenModal }) {
+function CarList({ onOpenModal, favorites, page }) {
   const cars = useSelector(state => state.cars);
   const dispatch = useDispatch();
 
@@ -15,7 +15,12 @@ function CarList({ onOpenModal }) {
     dispatch(fetchCars());
   }, [dispatch]);
 
-  const displayedCars = cars.slice(0, loadedCars);
+  let displayedCars;
+  if (page === 'favorites') {
+    displayedCars = cars.filter(car => favorites.includes(car.id));
+  } else {
+    displayedCars = cars.slice(0, loadedCars);
+  }
 
   const onLoadMore = () => {
     setLoadedCars(prevLoadedCars => prevLoadedCars + itemsPerPage);
@@ -26,12 +31,7 @@ function CarList({ onOpenModal }) {
       <ul>
         {displayedCars.map(car => {
           return (
-            <CarItem
-              key={car.id}
-              carInfo={car}
-              id={car.id}
-              onOpenModal={onOpenModal}
-            />
+            <CarItem key={car.id} carInfo={car} onOpenModal={onOpenModal} />
           );
         })}
       </ul>

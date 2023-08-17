@@ -1,9 +1,9 @@
-const { createSlice } = require('@reduxjs/toolkit');
-const { fetchCars } = require('./operations');
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchCars } from './operations';
 
 const initialState = {
   cars: [],
-  favourites: [],
+  favorites: [],
   isLoading: false,
   error: null,
   filter: '',
@@ -15,6 +15,16 @@ const carsSlice = createSlice({
   reducers: {
     setFilter: (state, action) => {
       state.filter = action.payload;
+    },
+    addToFavorites: (state, action) => {
+      const carId = action.payload;
+      if (!state.favorites.includes(carId)) {
+        state.favorites.push(carId);
+      }
+    },
+    removeFromFavorites: (state, action) => {
+      const carId = action.payload;
+      state.favorites = state.favorites.filter(id => id !== carId);
     },
   },
   extraReducers: builder => {
@@ -34,5 +44,6 @@ const carsSlice = createSlice({
   },
 });
 
-export const { setFilter } = carsSlice.actions;
+export const { setFilter, addToFavorites, removeFromFavorites } =
+  carsSlice.actions;
 export const carsReducer = carsSlice.reducer;

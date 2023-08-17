@@ -1,3 +1,6 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { addToFavorites, removeFromFavorites } from 'redux/slice';
+
 function CarItem({
   carInfo: {
     make,
@@ -19,6 +22,19 @@ function CarItem({
   },
   onOpenModal,
 }) {
+  const favorites = useSelector(state => state.favorites);
+  const dispatch = useDispatch();
+
+  const isFavorite = favorites.includes(id);
+
+  const onClickFavorite = () => {
+    if (isFavorite) {
+      dispatch(removeFromFavorites(id));
+    } else {
+      dispatch(addToFavorites(id));
+    }
+  };
+
   return (
     <li>
       <img src={img} alt={make} width={300} loading="lazy" />
@@ -54,6 +70,12 @@ function CarItem({
         }}
       >
         Learn more
+      </button>
+      <button
+        onClick={onClickFavorite}
+        style={{ backgroundColor: isFavorite ? 'red' : 'blue' }}
+      >
+        heart
       </button>
     </li>
   );
