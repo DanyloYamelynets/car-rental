@@ -17,6 +17,7 @@ export const StyledImg = styled.img`
 export const CarCont = styled.div`
   display: flex;
   justify-content: space-between;
+  width: 100%;
 `;
 export const CarTitle = styled.h3`
   display: flex;
@@ -34,11 +35,9 @@ export const CarTitle = styled.h3`
   }
 `;
 export const CarPrice = styled.p`
-  display: flex;
-  text-align: right;
-  align-items: flex-end;
-  justify-content: flex-end;
   margin: 0;
+  margin-top: 17px;
+  margin-left: auto;
 `;
 export const CarInfo = styled.p`
   color: rgba(18, 20, 23, 0.5);

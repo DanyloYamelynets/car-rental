@@ -39,7 +39,7 @@ export const Home = () => {
       </AdvList>
       <Contact>Contacts:</Contact>
       <ContactList>
-        <li>+380631234567</li>
+        <li>+380730000000</li>
         <li>Kyiv, Shevchenka street, 43</li>
         <li>Email: carrental@mail.com</li>
       </ContactList>

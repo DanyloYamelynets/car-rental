@@ -13,6 +13,8 @@ export const HomeTitle = styled.h1`
 `;
 export const Welcome = styled.h2`
   font-size: 25px;
+  display: flex;
+  text-align: center;
 `;
 export const OurAdvantages = styled.h3`
   font-size: 25px;

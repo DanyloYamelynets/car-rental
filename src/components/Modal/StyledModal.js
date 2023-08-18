@@ -76,6 +76,10 @@ export const AccFunc = styled.p`
   line-height: 18px;
   max-width: 455px;
 `;
+export const ConditionsCont = styled.div`
+  display: flex;
+  gap: 8px;
+`;
 export const RentalConditions = styled.p`
   margin: 5px 0;
   font-size: 12px;

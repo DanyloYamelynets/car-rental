@@ -5,6 +5,7 @@ import {
   CarInfo,
   CarTitle,
   CloseBtn,
+  ConditionsCont,
   IconClose,
   ImgStyled,
   MileagePrice,
@@ -48,7 +49,7 @@ function Modal({ onCloseModal, modalData }) {
     ...modalData?.accessories,
     ...modalData?.functionalities,
   ];
-
+  const conditions = modalData?.rentalConditions.split('\n');
   return (
     <Overlay onClick={handleClickOverlay}>
       <ModalItem>
@@ -82,16 +83,28 @@ function Modal({ onCloseModal, modalData }) {
         <TitleText>Accessories and functionalities:</TitleText>
         <AccFunc>{AccesoriesAndFunctionalities.join(' | ')}</AccFunc>
         <TitleText>Rental Conditions:</TitleText>
-        <RentalConditions>{modalData?.rentalConditions}</RentalConditions>
+        <ConditionsCont>
+          <RentalConditions>{conditions[0]}</RentalConditions>
+          <RentalConditions>{conditions[1]}</RentalConditions>
+          <RentalConditions>{conditions[2]}</RentalConditions>
+        </ConditionsCont>
         <MileagePriceCont>
           <MileagePrice>
-            Mileage: <span>{modalData?.mileage.toLocaleString()}</span>
+            Mileage: <span>{modalData?.mileage.toLocaleString('en-US')}</span>
           </MileagePrice>
           <MileagePrice>
             Price: <span>{modalData?.rentalPrice}</span>
           </MileagePrice>
         </MileagePriceCont>
-        <RentBtn>Rental car</RentBtn>
+        <a
+          href="tel:+380730000000"
+          style={{
+            textDecoration: 'none',
+            color: 'white',
+          }}
+        >
+          <RentBtn>Rental car</RentBtn>
+        </a>
       </ModalItem>
     </Overlay>
   );

@@ -52,8 +52,8 @@ function CarItem({
       <CarCont>
         <CarTitle>
           {make} <span>{model}</span>, {year}
-          <CarPrice>{rentalPrice}</CarPrice>
         </CarTitle>
+        <CarPrice>{rentalPrice}</CarPrice>
       </CarCont>
       <CarInfo>
         {address} | {rentalCompany} | {type} | {model} | {id} |{' '}
