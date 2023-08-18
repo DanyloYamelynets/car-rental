@@ -1,5 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorites, removeFromFavorites } from 'redux/slice';
+import {
+  CarInfo,
+  CarPrice,
+  CarTitle,
+  FavBtn,
+  LearnMoreBtn,
+  StyledImg,
+  StyledItem,
+  FavIcon,
+  CarCont,
+} from './StyledCarItem';
 
 function CarItem({
   carInfo: {
@@ -36,17 +47,27 @@ function CarItem({
   };
 
   return (
-    <li>
-      <img src={img} alt={make} width={300} loading="lazy" />
-      <h3>
-        {make} <span>{model}</span>, {year}
-      </h3>
-      <p>{rentalPrice}</p>
-      <p>
+    <StyledItem>
+      <StyledImg src={img} alt={make} width={274} height={268} loading="lazy" />
+      <CarCont>
+        <CarTitle>
+          {make} <span>{model}</span>, {year}
+          <CarPrice>{rentalPrice}</CarPrice>
+        </CarTitle>
+      </CarCont>
+      <CarInfo>
         {address} | {rentalCompany} | {type} | {model} | {id} |{' '}
         {functionalities[0]}
-      </p>
-      <button
+      </CarInfo>
+      <FavBtn onClick={onClickFavorite}>
+        <FavIcon
+          style={{
+            color: isFavorite ? '#3470FF' : 'rgba(255, 255, 255, 0.80)',
+            fontSize: 20,
+          }}
+        />
+      </FavBtn>
+      <LearnMoreBtn
         id={id}
         onClick={() => {
           onOpenModal({
@@ -70,14 +91,8 @@ function CarItem({
         }}
       >
         Learn more
-      </button>
-      <button
-        onClick={onClickFavorite}
-        style={{ backgroundColor: isFavorite ? 'red' : 'blue' }}
-      >
-        heart
-      </button>
-    </li>
+      </LearnMoreBtn>
+    </StyledItem>
   );
 }
 

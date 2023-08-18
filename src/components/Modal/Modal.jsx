@@ -4,9 +4,14 @@ import {
   CarDescr,
   CarInfo,
   CarTitle,
+  CloseBtn,
+  IconClose,
+  ImgStyled,
   MileagePrice,
+  MileagePriceCont,
   ModalItem,
   Overlay,
+  RentBtn,
   RentalConditions,
   TitleText,
 } from './StyledModal';
@@ -47,12 +52,19 @@ function Modal({ onCloseModal, modalData }) {
   return (
     <Overlay onClick={handleClickOverlay}>
       <ModalItem>
-        <button onClick={handleClickBtnClose}>Close</button>
+        <CloseBtn onClick={handleClickBtnClose}>
+          <IconClose
+            style={{
+              fontSize: 23,
+            }}
+          />
+        </CloseBtn>
         <div>
-          <img
+          <ImgStyled
             src={modalData?.img}
             alt={modalData?.make}
             width={461}
+            height={248}
             loading="lazy"
           />
         </div>
@@ -71,11 +83,15 @@ function Modal({ onCloseModal, modalData }) {
         <AccFunc>{AccesoriesAndFunctionalities.join(' | ')}</AccFunc>
         <TitleText>Rental Conditions:</TitleText>
         <RentalConditions>{modalData?.rentalConditions}</RentalConditions>
-        <MileagePrice>
-          Mileage: {modalData?.mileage.toLocaleString()}
-        </MileagePrice>
-        <MileagePrice>Price: {modalData?.rentalPrice}</MileagePrice>
-        <button>Rental car</button>
+        <MileagePriceCont>
+          <MileagePrice>
+            Mileage: <span>{modalData?.mileage.toLocaleString()}</span>
+          </MileagePrice>
+          <MileagePrice>
+            Price: <span>{modalData?.rentalPrice}</span>
+          </MileagePrice>
+        </MileagePriceCont>
+        <RentBtn>Rental car</RentBtn>
       </ModalItem>
     </Overlay>
   );

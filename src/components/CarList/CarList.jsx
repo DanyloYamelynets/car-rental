@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCars } from 'redux/operations';
+import { BtnCont, LoadMoreBtn, StyledList } from './StyledCarList';
 
 function CarList({ onOpenModal, favorites, page }) {
   const cars = useSelector(state => state.cars);
@@ -28,15 +29,17 @@ function CarList({ onOpenModal, favorites, page }) {
 
   return (
     <>
-      <ul>
+      <StyledList>
         {displayedCars.map(car => {
           return (
             <CarItem key={car.id} carInfo={car} onOpenModal={onOpenModal} />
           );
         })}
-      </ul>
-      {loadedCars < cars.length && (
-        <button onClick={onLoadMore}>Load more</button>
+      </StyledList>
+      {page !== 'favorites' && loadedCars < cars.length && (
+        <BtnCont>
+          <LoadMoreBtn onClick={onLoadMore}>Load more</LoadMoreBtn>
+        </BtnCont>
       )}
     </>
   );

@@ -1,21 +1,26 @@
-import { Catalog } from 'pages/Catalog';
-import { Favorites } from 'pages/Favorites';
-import { Home } from 'pages/Home';
+import { Catalog } from 'pages/Catalog/Catalog';
+import { Favorites } from 'pages/Favorites/Favorites';
+import { Home } from 'pages/Home/Home';
 import { Suspense } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import Loader from './Loader/Loader';
 import { Navigate } from 'react-router-dom/dist';
+import { BtnNav, ContainerApp } from './StyledApp';
 
 export const App = () => {
   return (
     <div>
-      <header>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/catalog">catalog</Link>
-          <Link to="/favorites">favorites</Link>
-        </nav>
-      </header>
+      <ContainerApp>
+        <Link to="/">
+          <BtnNav>Home</BtnNav>
+        </Link>
+        <Link to="/catalog">
+          <BtnNav>Catalog</BtnNav>
+        </Link>
+        <Link to="/favorites">
+          <BtnNav>Favorites</BtnNav>
+        </Link>
+      </ContainerApp>
       <main>
         <Suspense fallback={<Loader />}>
           <Routes>
