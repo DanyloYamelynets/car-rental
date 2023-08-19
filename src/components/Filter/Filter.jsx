@@ -31,7 +31,7 @@ const Filter = ({ onFilterChange }) => {
       filteredResults = cars.filter(car => car.rentalPrice === carPrice);
     }
 
-    console.log('filteredResults: ', filteredResults);
+    console.log(filteredResults);
     if (!filteredResults.length > 0) {
       //   notifyCarSearchError();
       return;
@@ -88,7 +88,7 @@ const Filter = ({ onFilterChange }) => {
           </div>
         </label>
         <button type="submit">Search</button>
-        {filteredCars.length > 0 && <button type="submit">Back</button>}
+        {filteredCars.length > 0 && <button type="button">Back</button>}
       </FormStyled>
     </Formik>
   );

@@ -6,7 +6,7 @@ import { fetchCars } from 'redux/operations';
 import { BtnCont, LoadMoreBtn, StyledList } from './StyledCarList';
 import { SelectCars } from 'redux/selectors';
 
-function CarList({  onOpenModal, favorites, page }) {
+function CarList({ onOpenModal, favorites, page }) {
   const cars = useSelector(SelectCars);
   const dispatch = useDispatch();
 
