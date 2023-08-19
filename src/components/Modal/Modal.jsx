@@ -18,10 +18,11 @@ import {
 } from './StyledModal';
 import { useSelector } from 'react-redux';
 import Loader from 'components/Loader/Loader';
+import { SelectError, SelectIsLoading } from 'redux/selectors';
 
 function Modal({ onCloseModal, modalData }) {
-  const isLoading = useSelector(state => state.isLoading);
-  const error = useSelector(state => state.error);
+  const isLoading = useSelector(SelectIsLoading);
+  const error = useSelector(SelectError);
 
   const handleClickBtnClose = () => {
     onCloseModal();

@@ -5,11 +5,12 @@ import React from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Container, FavoritesTitle } from './StyledFavorites';
+import { SelectError, SelectFavorites, SelectIsLoading } from 'redux/selectors';
 
 export const Favorites = () => {
-  const favorites = useSelector(state => state.favorites);
-  const isLoading = useSelector(state => state.isLoading);
-  const error = useSelector(state => state.error);
+  const favorites = useSelector(SelectFavorites);
+  const isLoading = useSelector(SelectIsLoading);
+  const error = useSelector(SelectError);
 
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState(null);

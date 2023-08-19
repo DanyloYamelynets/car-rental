@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export const StyledItem = styled.li`
   width: 274px;
@@ -79,9 +80,17 @@ export const FavBtn = styled.button`
   border: none;
   padding: 0;
 `;
-export const FavIcon = styled(FavoriteBorderIcon)`
-  color: white;
-  background-color: transparent;
+export const FavIconBorder = styled(FavoriteBorderIcon)`
+  transition: 250ms;
+  &:active,
+  &:focus,
+  &:hover {
+    cursor: pointer;
+    transition: 250ms;
+    transform: scale(1.2);
+  }
+`;
+export const FavIconFill = styled(FavoriteIcon)`
   transition: 250ms;
   &:active,
   &:focus,

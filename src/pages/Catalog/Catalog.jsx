@@ -5,13 +5,20 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCars } from 'redux/operations';
 import { CatalogTitle, Container } from './StyledCatalog';
+import {
+  SelectCars,
+  SelectError,
+  SelectFavorites,
+  SelectIsLoading,
+} from 'redux/selectors';
+import Filter from 'components/Filter/Filter';
 
 export const Catalog = () => {
   const dispatch = useDispatch();
-  const cars = useSelector(state => state.cars);
-  const isLoading = useSelector(state => state.isLoading);
-  const error = useSelector(state => state.error);
-  const favorites = useSelector(state => state.favorites);
+  const cars = useSelector(SelectCars);
+  const favorites = useSelector(SelectFavorites);
+  const isLoading = useSelector(SelectIsLoading);
+  const error = useSelector(SelectError);
 
   useEffect(() => {
     dispatch(fetchCars());
@@ -19,6 +26,7 @@ export const Catalog = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState(null);
+  const [filteredCars, setFilteredCars] = useState([]);
 
   const onOpenModal = data => {
     setModalData(data);
@@ -28,17 +36,26 @@ export const Catalog = () => {
   const onCloseModal = () => {
     setShowModal(false);
   };
+
+  const handleFilterChange = filteredResults => {
+    setFilteredCars(filteredResults);
+  };
   return (
     <Container>
       <CatalogTitle>Cars For Rent</CatalogTitle>
+      <Filter onFilterChange={handleFilterChange} />
       {isLoading && <Loader />}
       {error && <div>Error: {error}</div>}
-      <CarList
-        favorites={favorites}
-        cars={cars}
-        onOpenModal={onOpenModal}
-        page="catalog"
-      />
+      {filteredCars?.length ? (
+        <CarList cars={filteredCars} />
+      ) : (
+        <CarList
+          favorites={favorites}
+          cars={cars}
+          onOpenModal={onOpenModal}
+          page="catalog"
+        />
+      )}
       {showModal && <Modal onCloseModal={onCloseModal} modalData={modalData} />}
     </Container>
   );

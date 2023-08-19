@@ -4,9 +4,10 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCars } from 'redux/operations';
 import { BtnCont, LoadMoreBtn, StyledList } from './StyledCarList';
+import { SelectCars } from 'redux/selectors';
 
-function CarList({ onOpenModal, favorites, page }) {
-  const cars = useSelector(state => state.cars);
+function CarList({  onOpenModal, favorites, page }) {
+  const cars = useSelector(SelectCars);
   const dispatch = useDispatch();
 
   const itemsPerPage = 8;

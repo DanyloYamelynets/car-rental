@@ -8,9 +8,11 @@ import {
   LearnMoreBtn,
   StyledImg,
   StyledItem,
-  FavIcon,
   CarCont,
+  FavIconFill,
+  FavIconBorder,
 } from './StyledCarItem';
+import { SelectFavorites } from 'redux/selectors';
 
 function CarItem({
   carInfo: {
@@ -33,7 +35,7 @@ function CarItem({
   },
   onOpenModal,
 }) {
-  const favorites = useSelector(state => state.favorites);
+  const favorites = useSelector(SelectFavorites);
   const dispatch = useDispatch();
 
   const isFavorite = favorites.includes(id);
@@ -60,12 +62,21 @@ function CarItem({
         {functionalities[0]}
       </CarInfo>
       <FavBtn onClick={onClickFavorite}>
-        <FavIcon
-          style={{
-            color: isFavorite ? '#3470FF' : 'rgba(255, 255, 255, 0.80)',
-            fontSize: 20,
-          }}
-        />
+        {isFavorite ? (
+          <FavIconFill
+            style={{
+              color: '#3470FF',
+              fontSize: 20,
+            }}
+          />
+        ) : (
+          <FavIconBorder
+            style={{
+              color: 'rgba(255, 255, 255, 0.80)',
+              fontSize: 20,
+            }}
+          />
+        )}
       </FavBtn>
       <LearnMoreBtn
         id={id}
