@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { SelectError, SelectIsLoading } from 'redux/selectors';
 import {
   AccFunc,
   CarDescr,
@@ -16,9 +18,7 @@ import {
   RentalConditions,
   TitleText,
 } from './StyledModal';
-import { useSelector } from 'react-redux';
 import Loader from 'components/Loader/Loader';
-import { SelectError, SelectIsLoading } from 'redux/selectors';
 
 function Modal({ onCloseModal, modalData }) {
   const isLoading = useSelector(SelectIsLoading);

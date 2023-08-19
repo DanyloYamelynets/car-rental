@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorites, removeFromFavorites } from 'redux/slice';
+import { SelectFavorites } from 'redux/selectors';
 import {
   CarInfo,
   CarPrice,
@@ -12,7 +14,7 @@ import {
   FavIconFill,
   FavIconBorder,
 } from './StyledCarItem';
-import { SelectFavorites } from 'redux/selectors';
+import Notiflix from 'notiflix';
 
 function CarItem({
   carInfo: {
@@ -43,8 +45,10 @@ function CarItem({
   const onClickFavorite = () => {
     if (isFavorite) {
       dispatch(removeFromFavorites(id));
+      Notiflix.Notify.failure('Car removed from favorites');
     } else {
       dispatch(addToFavorites(id));
+      Notiflix.Notify.success('Car added to favorites');
     }
   };
 
@@ -106,5 +110,10 @@ function CarItem({
     </StyledItem>
   );
 }
+
+CarItem.propTypes = {
+  carInfo: PropTypes.object.isRequired,
+  onOpenModal: PropTypes.func.isRequired,
+};
 
 export default CarItem;

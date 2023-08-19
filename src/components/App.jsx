@@ -1,10 +1,10 @@
+import { Suspense } from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
+import { Navigate } from 'react-router-dom/dist';
 import { Catalog } from 'pages/Catalog/Catalog';
 import { Favorites } from 'pages/Favorites/Favorites';
 import { Home } from 'pages/Home/Home';
-import { Suspense } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
 import Loader from './Loader/Loader';
-import { Navigate } from 'react-router-dom/dist';
 import { BtnNav, ContainerApp } from './StyledApp';
 
 export const App = () => {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { SelectCars, SelectFilter } from 'redux/selectors';
 import { Field, Formik } from 'formik';
 import * as Yup from 'yup';
-import { SelectCars, SelectFilter } from 'redux/selectors';
 import { FormStyled } from './StyledFilter';
 
 const Filter = ({ onFilterChange }) => {
@@ -33,11 +33,9 @@ const Filter = ({ onFilterChange }) => {
 
     console.log(filteredResults);
     if (!filteredResults.length > 0) {
-      //   notifyCarSearchError();
       return;
     } else {
       onFilterChange(filteredResults);
-      //   notifyCarSearch(filteredCars.length);
     }
   };
 

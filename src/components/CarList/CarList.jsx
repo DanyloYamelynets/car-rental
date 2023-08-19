@@ -1,10 +1,10 @@
-import CarItem from 'components/CarItem/CarItem';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCars } from 'redux/operations';
-import { BtnCont, LoadMoreBtn, StyledList } from './StyledCarList';
 import { SelectCars } from 'redux/selectors';
+import { BtnCont, LoadMoreBtn, StyledList } from './StyledCarList';
+import CarItem from 'components/CarItem/CarItem';
 
 function CarList({ onOpenModal, favorites, page }) {
   const cars = useSelector(SelectCars);
