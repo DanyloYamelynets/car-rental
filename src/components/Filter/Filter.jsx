@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Field, Form, Formik } from 'formik';
+import { Field, Formik } from 'formik';
 import * as Yup from 'yup';
 import { SelectCars, SelectFilter } from 'redux/selectors';
 import { FormStyled } from './StyledFilter';
