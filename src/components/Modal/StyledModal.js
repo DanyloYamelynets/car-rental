@@ -7,9 +7,9 @@ export const Overlay = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  justify-content: center;
-  background-color: rgba(116, 114, 114, 0.7);
-  z-index: 1200;
+  background-color: rgba(18, 20, 23, 0.5);
+  overscroll-behavior: contain;
+  z-index: 5;
 `;
 export const ModalItem = styled.div`
   position: absolute;
@@ -28,6 +28,7 @@ export const ModalItem = styled.div`
 `;
 export const ImgStyled = styled.img`
   border-radius: 12px;
+  object-fit: cover;
 `;
 export const CarTitle = styled.h3`
   margin: 5px 0;
